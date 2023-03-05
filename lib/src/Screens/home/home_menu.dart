@@ -1,6 +1,5 @@
 import 'dart:ffi';
 import 'dart:ui';
-
 import 'package:enviroc/src/config/cores.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -105,33 +104,28 @@ class _HomeNavegadoState extends State<HomeNavegado> {
               ),
             ),
           ),
+          Container (
+            padding: const EdgeInsets.only(left: 25),
+            height: 40,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (Dart_CObject, index) {
+                return CategoryTile(
+                  onPressed: (){
+                    setState ((){
+                      selectedcategory = appData.categorias[index] as String;
+                    });
+                  },
+                  categorias: appData.categorias[index].toString(),
+                  isSelected: appData.categorias[index] == selectedcategory,
+                );
+              },
+              separatorBuilder: (Dart_CObject, index) => const SizedBox(width: 10),
+              itemCount: appData.categorias.length,
+            ),
+          ),
         ],
       ),
-
-      //Categorias
-
-      Container (
-        padding: const EdgeInsets.only(left: 25),
-        height: 40,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (Dart_CObject, index) {
-            return CategoryTile(
-              onPressed: (){
-                setState ((){
-                  selectedcategory = appData.categorias[index];
-                });
-              },
-              categorias: appData.categorias[index],
-              isSelected: appData.categorias[index] == selectedcategory,
-            );
-          },
-          separatorBuilder: (Dart_CObject, index) => const SizedBox(width: 10),
-          itemCount: appData.categorias.length,
-        ),
-      ),
-
-      //grid
     );
   }
 }

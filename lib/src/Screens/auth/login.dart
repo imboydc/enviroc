@@ -1,3 +1,4 @@
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:enviroc/src/Screens/auth/components/campos_customizados.dart';
 import 'package:enviroc/src/Screens/auth/registo.dart';
